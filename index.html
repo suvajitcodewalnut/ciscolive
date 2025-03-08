@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- PAGE TITLE -->
+  <title>CISCO LIVE</title>
+  <!-- CSS LINKS -->
+  <!-- <link rel="stylesheet" href="index.css" />  -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+
+  <link rel="stylesheet" href="./styles/root.css">
+  <link rel="stylesheet" href="./styles/globals.css">
+  <link rel="stylesheet" href="./styles/font.css">
+
+  <link rel="stylesheet" href="./styles/hero.section.css">
+  <link rel="stylesheet" href="./styles/timeline.section.css">
+  <link rel="stylesheet" href="./styles/catalog.section.css">
+  <link rel="stylesheet" href="./styles/party.section.css">
+  <link rel="stylesheet" href="./styles/sponsers.section.css">
+  <link rel="stylesheet" href="./styles/speakers.section.css">
+
+  <link rel="stylesheet" href="./styles/responsive.css">
+</head>
+
+<body>
+
+  <main scroll-container>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <video src="./assets/hero-container-video.webm" muted class="hero-section__video" preload="metadata"
+        playsinline></video>
+      <div class="container layer-top">
+        <div class="hero-section__content">
+          <p class="hero-section__location">San Diego, CA | June 8-12, 2025</p>
+          <p class="hero-section__title">Lorem ipsum dolor sit amet</p>
+          <p class="hero-section__description">
+            Vestibulum hendrerit leo quis nulla vestibulum, in venenatis nunc
+            maximus. Donec vulputate dapibus augue, nec sollicitudin dolor
+            lacinia.
+          </p>
+          <a href="#" class="hero-section__cta-button">
+            <div class="hero-section__cta">
+              Register Now
+              <img src="./assets/Arrow.svg" alt="Arrow icon" class="hero-section__cta-icon" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section class="timeline">
+      <div class="container">
+        <div class="timeline-container">
+          <div class="timeline-content">
+            <div class="timeline-start-marker"></div>
+            <div class="timeline-months" id="timelineMonths"></div>
+            <div class="timeline-progress">
+              <div class="timeline-progress-dots" id="timelineProgressDots"></div>
+              <div class="timeline-progress-line" id="timelineProgressLine"></div>
+              <div class="timeline-end-marker">
+                <div class="timeline-end-line"></div>
+                <div class="timeline-end-circle"></div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-countdown">
+            <span class="timeline-countdown-days"></span><span class="timeline-countdown-unit">days</span>
+            <span class="timeline-countdown-hours"></span><span class="timeline-countdown-unit">hours</span>
+            <span class="timeline-countdown-minutes"></span><span class="timeline-countdown-unit">minutes</span>
+            <span class="timeline-countdown-seconds"></span><span class="timeline-countdown-unit">seconds</span>
+          </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section class="catalog">
+      <div class="container">
+        <div class="catalog__content">
+          <div class="catalog__section catalog__section--left">
+            <div class="catalog__text-wrapper">
+              <p class="catalog__heading catalog__heading--blue">
+                Explore the session catalog
+              </p>
+              <p class="catalog__paragraph">
+                Experts offer over 1,000 technical and business sessions you
+                wouldn't want to miss.
+              </p>
+              <button class="catalog__button catalog__button--blue">
+                <span>Search Now</span>
+                <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+              </button>
+            </div>
+          </div>
+          <div class="catalog__section catalog__section--center hidden">
+            <img src="./assets/cisco-event-image.png" alt="" class="catalog__image" />
+          </div>
+          <div class="catalog__section catalog__section--right">
+            <div class="catalog__text-wrapper">
+              <h2 class="catalog__heading catalog__heading--red">
+                Why attend?
+              </h2>
+              <p class="catalog__paragraph">
+                Explore the reasons to attend Cisco Live and strategies to
+                convince your boss.
+              </p>
+              <button class="catalog__button catalog__button--red">
+                <span>Go Now</span>
+                <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTY SECTION -->
+    <section class="party">
+      <div class="party__left">
+        <div class="party__left-imageone">
+          <img src="./assets/party_one.png" alt="" class="party__imageone">
+        </div>
+        <div class="party__left-container">
+          <div class="party__left-imagetwo">
+            <img src="./assets/party_two.png" alt="" class="party__imagetwo">
+          </div>
+          <div class="party__left-imagethree">
+            <img src="./assets/the_killers.png" alt="" class="party__imagethree">
+          </div>
+        </div>
+      </div>
+      <div class="party__right">
+        <p class="party__heading--blue">Let's party!</p>
+        <p class="party__paragraph">Get ready to celebrate at the Cisco Live Street Festival, featuring a top named
+          band.
+        </p>
+      </div>
+    </section>
+
+    <!-- POWERFUL SPEAKERS -->
+    <section class="speakers hidden">
+      <div class="speakers__left">
+        <p class="speakers__heading--red">Powerful <br> speakers</p>
+        <p class="speakers__paragraph">Cisco&apos;s executives and world-renowned speakers converge at Cisco Live to
+          bring
+          you cutting edge information about the
+          industry and thought leadership.
+        </p>
+        <button class="speakers__button speakers__button--red">
+          <span>See all speakers</span>
+          <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+        </button>
+      </div>
+      <div class="speakers__right">
+        <div class="speakers__view">
+          <!-- CARD ONE -->
+          <div class="speakers__card cardone">
+            <div class="speakers__card--image">
+              <img src="./assets/speaker_one.png" alt="">
+            </div>
+            <div class="speakers__card--wrapper">
+              <div class="speakers__card--description">
+                <h3>Liz Centoni</h3>
+                <hr class="horizontalrule">
+                <p>EVP, Chief Strategy Officer and General Manager, Applications, Cisco</p>
+              </div>
+            </div>
+          </div>
+          <!-- CARD TWO -->
+          <div class="speakers__card cardtwo">
+            <div class="speakers__card--image">
+              <img src="./assets/speaker_two.png" alt="">
+            </div>
+            <div class="speakers__card--wrapper">
+              <div class="speakers__card--description">
+                <h3>Jeetu Patel</h3>
+                <hr class="horizontalrule">
+                <p>EVP and General Manager, security and Collaboration, Cisco</p>
+              </div>
+            </div>
+          </div>
+          <!-- CARD THREE -->
+          <div class="speakers__card cardthree">
+            <div class="speakers__card--image">
+              <img src="./assets/speaker_three.png" alt="">
+            </div>
+            <div class="speakers__card--wrapper">
+              <div class="speakers__card--description">
+                <h3>Chuck Robbins</h3>
+                <hr class="horizontalrule">
+                <p>Chair and Chief Executive Officer of Cisco Systems</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="speakers__toggle">
+          <div class="speakers__toggle--arrow">
+            <div class="speakers__toggle--arrowleft"> <img src="./assets/arrow_left.svg" class="arrow_left"
+                type="image/svg+xml">
+            </div>
+            <div class="speakers__toggle--arrowright"> <img src="./assets/arrow_right.svg" class="arrow_right"
+                type="image/svg+xml">
+            </div>
+          </div>
+          <div class="speakers__toggle--dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSER SECTION -->
+    <section class="sponsors-section">
+      <div class="container">
+        <div class="sponsors">
+          <p class="sponsors__heading">Thank you to our sponsors</p>
+          <div class="sponsors__cards">
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+            <div class="sponsors__card">
+              <img src="./assets/sponsor-logo.png" alt="Google Logo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+  <script src="animation.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

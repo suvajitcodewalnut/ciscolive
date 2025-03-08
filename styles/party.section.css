@@ -1,0 +1,39 @@
+.party {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 35px 90px 80px 110px;
+  background: rgb(168, 243, 255);
+  background: radial-gradient(
+    circle at 30% 60%,
+    rgba(168, 243, 255, 1) 8%,
+    rgba(255, 255, 255, 1) 32%
+  );
+}
+
+.party__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.party__left-imageone {
+  margin-top: 90px;
+  margin-right: 4px;
+}
+
+.party__heading--blue {
+  font-size: 44px;
+  font-weight: 350;
+  color: var(--color-blue);
+}
+
+.party__paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-text);
+}

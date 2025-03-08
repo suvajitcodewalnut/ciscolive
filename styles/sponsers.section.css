@@ -1,0 +1,32 @@
+/* SPONSERS */
+.sponsors-section {
+  background: linear-gradient(
+    48.23deg,
+    rgba(255, 255, 255, 0) 46.33%,
+    rgba(5, 19, 77, 0.1) 107.35%
+  );
+}
+.sponsors {
+  padding: 60px 120px 90px;
+}
+.sponsors__heading {
+  margin-bottom: 40px;
+  font-size: 34px;
+  font-weight: 350;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.sponsors__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.sponsors__card {
+  background: var(--color-white);
+  padding: 60px;
+  box-shadow: var(--box-shadow);
+  border-radius: 9px;
+  text-align: center;
+}

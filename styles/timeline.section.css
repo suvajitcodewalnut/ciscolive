@@ -1,0 +1,124 @@
+/* TIMELINE */
+.timeline {
+  background: linear-gradient(
+    107.26deg,
+    #1b4c6d -1.37%,
+    #0a1f49 35.58%,
+    #07182d 57.97%
+  );
+}
+.timeline-container {
+  display: flex;
+  padding: 40px 120px 40px 155px;
+  gap: 40px;
+  align-items: center;
+}
+
+.timeline-content {
+  width: 60%;
+  max-width: 580px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-months {
+  position: relative;
+  width: 97%;
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  height: 20px;
+}
+
+.timeline-months span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.timeline-progress {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  height: 8px;
+}
+
+.timeline-progress-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle, var(--color-white) 2px, transparent 2px)
+    repeat-x;
+  background-size: 8px 8px;
+}
+
+.timeline-progress-line {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid var(--color-white);
+}
+
+.timeline-start-marker {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  background-color: transparent;
+  left: -35px;
+}
+
+.timeline-countdown {
+  color: var(--color-white);
+  font-size: 44px;
+  margin-left: 10px;
+}
+
+.timeline-countdown-days,
+.timeline-countdown-hours,
+.timeline-countdown-minutes,
+.timeline-countdown-seconds {
+  color: var(--color-white);
+  font-size: 44px;
+  font-weight: 350;
+  line-height: 50px;
+}
+
+.timeline-countdown-unit {
+  color: var(--color-white);
+  margin: 0px 0px 0px 4px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.timeline-end-marker {
+  position: absolute;
+  top: -8px;
+  right: -16px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.timeline-end-line {
+  width: 6px;
+  height: 20px;
+  background-color: var(--color-white);
+}
+
+.timeline-end-circle {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+}

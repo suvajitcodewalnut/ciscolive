@@ -1,0 +1,98 @@
+/* FONTS */
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTThin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTThinOblique.ttf') format('truetype');
+  font-weight: 100;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTExtraLightOblique.ttf') format('truetype');
+  font-weight: 200;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTLightOblique.ttf') format('truetype');
+  font-weight: 300;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTRegularOblique.ttf') format('truetype');
+  font-weight: 400;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTMediumOblique.ttf') format('truetype');
+  font-weight: 500;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTBoldOblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTHeavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CiscoSans';
+  src: url('/fonts/CiscoSansTTHeavyOblique.ttf') format('truetype');
+  font-weight: 800;
+  font-style: oblique;
+}
