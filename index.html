@@ -7,7 +7,6 @@
   <!-- PAGE TITLE -->
   <title>CISCO LIVE</title>
   <!-- CSS LINKS -->
-  <!-- <link rel="stylesheet" href="index.css" />  -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
 
@@ -85,13 +84,14 @@
               <p class="catalog__heading catalog__heading--blue">
                 Explore the session catalog
               </p>
-              <p class="catalog__paragraph">
+              <p class="catalog__paragraph catalog__paragraph--blue">
                 Experts offer over 1,000 technical and business sessions you
                 wouldn't want to miss.
               </p>
               <button class="catalog__button catalog__button--blue">
-                <span>Search Now</span>
-                <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+                <span class="catalog__button-span">Search Now</span>
+                <span class="catalog__button-span"><img src="./assets/Arrow.svg" alt=""
+                    class="catalog__button-icon" /></span>
               </button>
             </div>
           </div>
@@ -103,13 +103,14 @@
               <h2 class="catalog__heading catalog__heading--red">
                 Why attend?
               </h2>
-              <p class="catalog__paragraph">
+              <p class="catalog__paragraph catalog__paragraph--red">
                 Explore the reasons to attend Cisco Live and strategies to
                 convince your boss.
               </p>
               <button class="catalog__button catalog__button--red">
-                <span>Go Now</span>
-                <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+                <span class="catalog__button-span">Go Now</span>
+                <span class="catalog__button-span"><img src="./assets/Arrow.svg" alt=""
+                    class="catalog__button-icon" /></span>
               </button>
             </div>
           </div>
@@ -125,10 +126,10 @@
         </div>
         <div class="party__left-container">
           <div class="party__left-imagetwo">
-            <img src="./assets/party_two.png" alt="" class="party__imagetwo">
+            <img src="./assets/party_two.png" alt="" class="party__imagetwo" id="imageOne">
           </div>
           <div class="party__left-imagethree">
-            <img src="./assets/the_killers.png" alt="" class="party__imagethree">
+            <img src="./assets/the_killers.png" alt="" class="party__imagethree" id="imageTwo">
           </div>
         </div>
       </div>
@@ -141,17 +142,17 @@
     </section>
 
     <!-- POWERFUL SPEAKERS -->
-    <section class="speakers hidden">
+    <section class="speakers">
       <div class="speakers__left">
         <p class="speakers__heading--red">Powerful <br> speakers</p>
-        <p class="speakers__paragraph">Cisco&apos;s executives and world-renowned speakers converge at Cisco Live to
-          bring
-          you cutting edge information about the
-          industry and thought leadership.
+        <p class="speakers__paragraph speakers__paragraph--inverted">Cisco&apos;s executives and world-renowned speakers
+          converge at Cisco Live to bring you cutting edge information about the industry and thought leadership.
         </p>
-        <button class="speakers__button speakers__button--red">
-          <span>See all speakers</span>
-          <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+        <button class="speakers__button speakers__button--red speakers__button--inverted">
+          <span class="speakers__span speakers__span--description">See all speakers</span>
+          <span class="speakers__span">
+            <img src="./assets/Arrow.svg" alt="" class="catalog__button-icon" />
+          </span>
         </button>
       </div>
       <div class="speakers__right">
@@ -159,7 +160,7 @@
           <!-- CARD ONE -->
           <div class="speakers__card cardone">
             <div class="speakers__card--image">
-              <img src="./assets/speaker_one.png" alt="">
+              <img src="./assets/speaker_one.png" alt="" class="speakers__image">
             </div>
             <div class="speakers__card--wrapper">
               <div class="speakers__card--description">
@@ -172,7 +173,7 @@
           <!-- CARD TWO -->
           <div class="speakers__card cardtwo">
             <div class="speakers__card--image">
-              <img src="./assets/speaker_two.png" alt="">
+              <img src="./assets/speaker_two.png" alt="" class="speakers__image">
             </div>
             <div class="speakers__card--wrapper">
               <div class="speakers__card--description">
@@ -185,7 +186,7 @@
           <!-- CARD THREE -->
           <div class="speakers__card cardthree">
             <div class="speakers__card--image">
-              <img src="./assets/speaker_three.png" alt="">
+              <img src="./assets/speaker_three.png" alt="" class="speakers__image">
             </div>
             <div class="speakers__card--wrapper">
               <div class="speakers__card--description">
@@ -205,7 +206,12 @@
                 type="image/svg+xml">
             </div>
           </div>
-          <div class="speakers__toggle--dots"></div>
+          <div class="speakers__toggle--dots">
+            <div class="dot active"></div>
+            <div class="dot inactive"></div>
+            <div class="dot inactive"></div>
+            <div class="dot inactive"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -240,9 +246,10 @@
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
-  <script src="animation.js"></script>
-  <script src="script.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script> -->
+  <script src="./script/animation.js"></script>
+  <script src="./script/script.js"></script>
+  <script src="./script/carousel.js"></script>
 </body>
 
 </html>
