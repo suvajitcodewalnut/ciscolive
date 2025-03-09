@@ -32,6 +32,10 @@
 }
 .catalog__image {
   border-radius: 8px;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  animation-delay: 0.5s;
+  position: relative;
 }
 .catalog__heading {
   font-size: 44px;
@@ -40,10 +44,20 @@
 
 .catalog__heading--blue {
   color: var(--color-blue);
+  font-style: normal;
+  line-height: 115%;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  position: relative;
 }
 
 .catalog__heading--red {
   color: var(--color-red);
+  font-style: normal;
+  line-height: 115%;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  position: relative;
 }
 
 .catalog__paragraph {
@@ -52,11 +66,62 @@
   line-height: 24px;
   color: var(--color-text);
 }
+.catalog__paragraph--blue {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  background-image: linear-gradient(
+    to right,
+    #18202f 0%,
+    #18202f 16%,
+    #1213af 52%,
+    #255ef0 62%,
+    #1cb9ff 74%,
+    white 100%
+  );
+  background-position-x: 300%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  color: transparent;
+  background-clip: text;
+  animation-name: text-burn;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+.catalog__paragraph--red {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  background-image: linear-gradient(
+    to right,
+    #18202f 0%,
+    #18202f 16%,
+    #ff007f 52%,
+    #f15a23 62%,
+    #fea800 74%,
+    white 100%
+  );
+  background-position-x: 300%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  color: transparent;
+  background-clip: text;
+  animation-name: text-burn;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
 
 .catalog__button {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
   padding: 12px 24px;
   border: none;
   border-radius: 30px;
@@ -64,6 +129,32 @@
   cursor: pointer;
   font-size: 12px;
   color: var(--color-midnight);
+  background-image: linear-gradient(
+    to right,
+    #ffa700 0%,
+    #ff027e 50%,
+    #ff4fa5 62%,
+    #ffb5e3 82%,
+    white 100%
+  );
+  background-position-x: 200%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  animation-name: cta-burn;
+  animation-delay: 0.3s;
+  animation-duration: 2.5s;
+  color: rgba(24, 32, 47, 0);
+}
+.catalog__button-icon {
+  margin-top: 3px;
+}
+.catalog__button-span {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%;
 }
 
 .catalog__button--blue {

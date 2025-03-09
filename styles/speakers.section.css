@@ -10,7 +10,7 @@
     var(--New-Blue, #07182d);
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 31px;
 }
 
 .speakers__heading--red {
@@ -18,6 +18,11 @@
   font-size: 44px;
   font-weight: 350;
   color: var(--color-red);
+  font-style: normal;
+  line-height: 115%;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  position: relative;
 }
 .speakers__paragraph {
   margin-bottom: 24px;
@@ -26,6 +31,39 @@
   font-weight: 400;
   line-height: 24px;
   color: var(--color-white);
+
+  background-image: linear-gradient(
+    to right,
+    #18202f 0%,
+    #18202f 16%,
+    #ff007f 52%,
+    #f15a23 62%,
+    #fea800 74%,
+    white 100%
+  );
+  background-position-x: 300%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  /* background-color: #fff; */
+  animation-fill-mode: forwards;
+  color: transparent;
+  background-clip: text;
+  animation-name: text-burn-inv;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+
+.speakers__paragraph--inverted {
+  background-image: linear-gradient(
+    to right,
+    #fff 0%,
+    #fff 16%,
+    #fea800 52%,
+    #f15a23 62%,
+    #ff007f 74%,
+    #07182d 100%
+  );
+  background-color: #07182d;
 }
 
 .speakers__button {
@@ -40,7 +78,56 @@
   cursor: pointer;
   font-size: 12px;
   color: var(--color-midnight);
+
+  /* height: 38px; */
+  /* width: 100%; */
+  /* padding: 13px 24px 11px 24px; */
+  /* margin-top: var(--Half-Margin, 12px); */
+  flex-shrink: 0;
+  /* align-self: stretch; */
+  /* border-radius: 35px; */
+  border: none;
+
+  background-image: linear-gradient(
+    to right,
+    #ffa700 0%,
+    #ff027e 50%,
+    #ff4fa5 62%,
+    #ffb5e3 82%,
+    white 100%
+  );
+  background-position-x: 200%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  animation-name: cta-burn;
+  animation-delay: 0.3s;
+  animation-duration: 2.5s;
+  color: rgba(24, 32, 47, 0);
 }
+.speakers__button--inverted {
+  background-image: linear-gradient(
+    to right,
+    #ffa700 0%,
+    #ff027e 50%,
+    #b00459 62%,
+    #3c0028 82%,
+    #07182d 100%
+  );
+  animation-name: cta-burn-inv;
+  background-color: #07182d;
+}
+.speakers__span {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%;
+}
+.speakers__span--description {
+  width: 99px;
+}
+
 .speakers__button--red {
   background: linear-gradient(90deg, #ffa700 0%, #ff027e 100%);
 }
@@ -50,11 +137,13 @@
   flex-direction: column;
   gap: 24px;
 }
+
 .speakers__view {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
+
 }
 
 .speakers__card {
@@ -70,7 +159,6 @@
   border-radius: var(--Half-Margin, 12px);
   object-fit: cover;
   box-shadow: 0 0px 14px 0 rgba(17, 20, 56, 0);
-
   animation-name: rise;
   animation-duration: 1.8s;
   position: relative;
@@ -171,7 +259,9 @@
 }
 
 .speakers__toggle {
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .speakers__toggle--arrow {
   display: flex;
@@ -193,4 +283,25 @@
 }
 .arrow_right {
   margin-right: 10px;
+}
+
+.speakers__toggle--dots {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 55%;
+}
+
+.dot.active {
+  width: 70px;
+  height: 7px;
+  border-radius: 10px;
+  background-color: white;
+}
+.dot.inactive {
+  width: 10px;
+  height: 7px;
+  border-radius: 10px;
+  background-color: #00a5e294;
 }

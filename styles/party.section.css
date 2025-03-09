@@ -4,7 +4,7 @@
   gap: 40px;
   justify-content: center;
   overflow: hidden;
-  padding: 35px 90px 80px 110px;
+  padding: 35px 90px 80px 100px;
   background: rgb(168, 243, 255);
   background: radial-gradient(
     circle at 30% 60%,
@@ -21,19 +21,62 @@
 }
 
 .party__left-imageone {
-  margin-top: 90px;
+  margin-top: 101px;
   margin-right: 4px;
+}
+
+.party__imageone {
+  animation-name: rise;
+  animation-duration: 1.8s;
+  /* animation-delay: 1s;  */
+  position: relative;
+}
+.party__imagetwo {
+  animation-name: rise;
+  animation-duration: 1.8s;
+  /* animation-delay: 1.2s;  */
+  position: relative;
+}
+.party__imagethree {
+  animation-name: rise;
+  animation-duration: 1.8s;
+  /* animation-delay: 1.4s;  */
+  position: relative;
 }
 
 .party__heading--blue {
   font-size: 44px;
-  font-weight: 350;
   color: var(--color-blue);
+  font-style: normal;
+  font-weight: 350;
+  line-height: 115%;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  animation-delay: 0.3s;
+  position: relative;
 }
 
 .party__paragraph {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: var(--color-text);
+  background-image: linear-gradient(
+    to right,
+    #18202f 0%,
+    #18202f 16%,
+    #1213af 52%,
+    #255ef0 62%,
+    #1cb9ff 74%,
+    white 100%
+  );
+  background-position-x: 300%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  color: transparent;
+  background-clip: text;
+  animation-name: text-burn;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
 }

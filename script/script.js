@@ -206,3 +206,19 @@ if (video) {
     { once: true }
   );
 }
+
+// Dynamically changing the image with a particular screen size
+function updateImage() {
+  const imageOne = document.getElementById("imageOne");
+  const imageTwo = document.getElementById("imageTwo");
+  if (window.innerWidth < 587) {
+    imageOne.src = "../assets/party_two_mobile.png";
+    imageTwo.src = "../assets/the_killers_mobile.png";
+  } else {
+    imageOne.src = "../assets/party_two.png";
+    imageTwo.src = "../assets/the_killers.png";
+  }
+}
+
+updateImage();
+window.addEventListener("resize", updateImage);
