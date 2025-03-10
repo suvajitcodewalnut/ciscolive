@@ -3,16 +3,23 @@ const scroll = new LocomotiveScroll({
   smooth: true,
 });
 
-const intersection = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    console.log(entry);
-    // If the element is showing
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    } else {
-      entry.target.classList.remove("show");
-    }
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".animate-element");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -20% 0px",
+    threshold: 0.3,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove("animate-element");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  elements.forEach((element) => observer.observe(element));
 });
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((element) => intersection.observe(element));
