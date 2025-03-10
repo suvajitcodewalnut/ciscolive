@@ -187,18 +187,10 @@
   line-height: 115%;
 }
 
-/* .catalog__button--blue {
-  background: linear-gradient(90deg, #17bbeb 0%, #3070e7 100%);
-} */
-
 .catalog__button--blue:hover {
   cursor: pointer;
   background: #00a5e2 !important;
 }
-
-/* .catalog__button--red {
-  background: linear-gradient(90deg, #ffa700 0%, #ff027e 100%);
-} */
 
 .catalog__button--red:hover {
   cursor: pointer;
