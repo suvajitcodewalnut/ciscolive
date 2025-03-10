@@ -67,27 +67,18 @@
 }
 
 .speakers__button {
+  border: 8px solid white;
   display: flex;
+  height: 38px;
+  width: 100%;
+  padding: 13px 24px 11px 24px;
+  margin-top: var(--Half-Margin, 12px);
   justify-content: space-between;
   align-items: center;
-  gap: 118px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--color-midnight);
-
-  /* height: 38px; */
-  /* width: 100%; */
-  /* padding: 13px 24px 11px 24px; */
-  /* margin-top: var(--Half-Margin, 12px); */
   flex-shrink: 0;
-  /* align-self: stretch; */
-  /* border-radius: 35px; */
+  align-self: stretch;
+  border-radius: 35px;
   border: none;
-
   background-image: linear-gradient(
     to right,
     #ffa700 0%,
@@ -96,6 +87,16 @@
     #ffb5e3 82%,
     white 100%
   );
+  background-position-x: 200%;
+  background-repeat: no-repeat;
+  background-size: 200% 100px;
+  background-color: #fff;
+  animation-fill-mode: forwards;
+  animation-name: cta-burn;
+  animation-delay: 0.3s;
+  animation-duration: 2.5s;
+  color: rgba(24, 32, 47, 0);
+
   background-position-x: 200%;
   background-repeat: no-repeat;
   background-size: 200% 100px;
@@ -116,7 +117,7 @@
     #07182d 100%
   );
   animation-name: cta-burn-inv;
-  background-color: #07182d;
+  background-color: #07182d; 
 }
 .speakers__span {
   font-size: 12px;
@@ -128,9 +129,9 @@
   width: 99px;
 }
 
-.speakers__button--red {
+/* .speakers__button--red {
   background: linear-gradient(90deg, #ffa700 0%, #ff027e 100%);
-}
+} */
 
 .speakers__right {
   display: flex;
@@ -143,7 +144,6 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-
 }
 
 .speakers__card {
