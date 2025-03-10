@@ -1,9 +1,18 @@
+// LOADING THE FULL DOM
 document.addEventListener("DOMContentLoaded", () => {
   const view = document.querySelector(".speakers__view");
   const dots = document.querySelectorAll(".speakers__toggle--dots .dot");
   let activeIndex = 0;
 
-  // Update dots with a smooth transition.
+  // ONLY THE FIRST THREE CARDS ARE VISIBLE IN THE VIEWPORT
+  const updateVisibleCards = () => {
+    const cards = Array.from(view.querySelectorAll(".speakers__card"));
+    cards.forEach((card, index) => {
+      card.style.display = index < 3 ? "" : "none";
+    });
+  };
+
+  // UPDATING THE DOTS WITH THE ACTIVE CARD TRANSITION
   const updateDots = () => {
     dots.forEach((dot, index) => {
       dot.style.transition = "all 0.3s ease";
@@ -17,13 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Ripple effect of the cards
+  // STACKING EFFECT OF THE CARDS
   const applyRippleEffect = (excludedCard, direction) => {
     const cards = Array.from(view.querySelectorAll(".speakers__card")).filter(
-      (card) => card !== excludedCard
+      (card) => card !== excludedCard && card.style.display !== "none"
     );
     cards.forEach((card, i) => {
-      const delay = i * 100; 
+      const delay = i * 100;
       setTimeout(() => {
         card.style.transition = "transform 0.3s ease";
         if (direction === "left") {
@@ -31,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
           card.style.transform = "translateX(0px)";
         } else {
           // card.style.transform = "translateX(10px)";
-          card.style.transfrom = "translateX(0px)"
+          card.style.transfrom = "translateX(0px)";
         }
         setTimeout(() => {
           card.style.transform = "translateX(0)";
@@ -40,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Animate card sliding left and fading out.
+  // ANIMATION LEFT OR RIGHT FADE-OUT EFFECT
   const slideFadeOutLeft = (element, callback) => {
     element.style.transition = "transform 0.5s, opacity 0.5s";
     element.style.transform = "translateX(-100%)";
@@ -52,8 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
       element.style.opacity = 1;
     }, 500);
   };
-
-  // Animate card sliding right and fading out.
   const slideFadeOutRight = (element, callback) => {
     element.style.transition = "transform 0.5s, opacity 0.5s";
     element.style.transform = "translateX(100%)";
@@ -66,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   };
 
-  // Animate fade in from the right.
+  // ANIMATION LEFT OR RIGHT FADE-IN EFFECT
   const fadeInFromRight = (element) => {
     element.style.transform = "translateX(100%)";
     element.style.opacity = 0;
@@ -79,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
       element.style.transition = "";
     }, 510);
   };
-
-  // Animate fade in from the left.
   const fadeInFromLeft = (element) => {
     element.style.transform = "translateX(-100%)";
     element.style.opacity = 0;
@@ -94,7 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 510);
   };
 
-  // Right arrow click: move the first card to the end.
+  // VISIBLE CARDS CONTAINER
+  updateVisibleCards();
+
+  // CLICK EVENT LISTENER : RIGHT ARROW
   document
     .querySelector(".speakers__toggle--arrowright")
     .addEventListener("click", () => {
@@ -102,14 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
       slideFadeOutLeft(firstCard, () => {
         view.appendChild(firstCard);
         fadeInFromRight(firstCard);
-
         applyRippleEffect(firstCard, "left");
+        updateVisibleCards();
       });
       activeIndex = (activeIndex + 1) % dots.length;
       updateDots();
     });
 
-  // Left arrow click: move the last card to the beginning.
+  // CLICK EVENT LISTENER : LEFT ARROW
   document
     .querySelector(".speakers__toggle--arrowleft")
     .addEventListener("click", () => {
@@ -117,9 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const lastCard = cards[cards.length - 1];
       slideFadeOutRight(lastCard, () => {
         view.insertBefore(lastCard, view.firstChild);
-        fadeInFromLeft(lastCard); 
-
+        fadeInFromLeft(lastCard);
         applyRippleEffect(lastCard, "right");
+        updateVisibleCards();
       });
       activeIndex = (activeIndex - 1 + dots.length) % dots.length;
       updateDots();
