@@ -42,27 +42,35 @@ const calculateTimeline = (currentDate) => {
   const remainingTime = targetDate - currentDate;
   const overallProgress = (elapsedTime / totalTime) * 100;
 
-  const remainingDays = Math.max(
-    0,
-    Math.floor(remainingTime / CONFIG.timeUnits.day)
-  );
+  // PREVIOUS LOGICAL CODE
+  // const remainingDays = Math.max(
+  //   0,
+  //   Math.floor(remainingTime / CONFIG.timeUnits.day)
+  // );
+
+  const remainingDays = Math.floor(remainingTime / CONFIG.timeUnits.day);
+
   const remainingHours = Math.max(
     0,
     Math.floor((remainingTime % CONFIG.timeUnits.day) / CONFIG.timeUnits.hour)
   );
+
   const remainingMinutes = Math.max(
     0,
     Math.floor(
       (remainingTime % CONFIG.timeUnits.hour) / CONFIG.timeUnits.minute
     )
   );
+
   const remainingSeconds = Math.max(
     0,
     Math.floor(
       (remainingTime % CONFIG.timeUnits.minute) / CONFIG.timeUnits.second
     )
   );
+
   const remainingWeeks = Math.ceil(remainingDays / 7);
+
   const shouldShowWeeks = remainingWeeks <= CONFIG.weeksThreshold;
   let progress = overallProgress;
   let effectiveStart = null;
