@@ -3,16 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const view = document.querySelector(".speakers__view");
   const dots = document.querySelectorAll(".speakers__toggle--dots .dot");
   let activeIndex = 0;
+  const cards = Array.from(view.querySelectorAll(".speakers__card"));
+  const n = cards.length;
+  let shift = 0;
+  let isAnimating = false;
+
+  cards.forEach((card, index) => {
+    card.dataset.initialOrder = index;
+    card.style.order = index;
+  });
 
   // ONLY THE FIRST THREE CARDS ARE VISIBLE IN THE VIEWPORT
   const updateVisibleCards = () => {
-    const cards = Array.from(view.querySelectorAll(".speakers__card"));
-    cards.forEach((card, index) => {
-      card.style.display = index < 3 ? "" : "none";
+    cards.forEach((card) => {
+      const initialOrder = parseInt(card.dataset.initialOrder, 10);
+      const computedOrder = (initialOrder - shift + n) % n;
+      card.style.order = computedOrder;
+      card.style.display = computedOrder < 3 ? "" : "none";
+      card.style.transition = "transform 0.3s ease";
+      card.style.transform = "none";
+      setTimeout(() => {
+        card.style.transition = "";
+      }, 300);
     });
   };
 
-  // UPDATING THE DOTS WITH THE ACTIVE CARD TRANSITION
   const updateDots = () => {
     dots.forEach((dot, index) => {
       dot.style.transition = "all 0.3s ease";
@@ -26,110 +41,185 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // STACKING EFFECT OF THE CARDS
-  const applyRippleEffect = (excludedCard, direction) => {
-    const cards = Array.from(view.querySelectorAll(".speakers__card")).filter(
-      (card) => card !== excludedCard && card.style.display !== "none"
-    );
-    cards.forEach((card, i) => {
-      const delay = i * 100;
-      setTimeout(() => {
-        card.style.transition = "transform 0.3s ease";
-        if (direction === "left") {
-          // card.style.transform = "translateX(-10px)";
-          card.style.transform = "translateX(0px)";
-        } else {
-          // card.style.transform = "translateX(10px)";
-          card.style.transfrom = "translateX(0px)";
-        }
-        setTimeout(() => {
-          card.style.transform = "translateX(0)";
-        }, 300);
-      }, delay);
-    });
-  };
-
-  // ANIMATION LEFT OR RIGHT FADE-OUT EFFECT
+  // Fade out to left.
   const slideFadeOutLeft = (element, callback) => {
     element.style.transition = "transform 0.5s, opacity 0.5s";
     element.style.transform = "translateX(-100%)";
     element.style.opacity = 0;
     setTimeout(() => {
       callback();
-      element.style.transition = "";
-      element.style.transform = "";
-      element.style.opacity = 1;
     }, 500);
   };
+
+  // Fade in from right.
+  const fadeInFromRight = (element) => {
+    element.style.transform = "translateX(100%)";
+    element.style.opacity = 0;
+    element.offsetHeight;
+
+    element.style.transition = "transform 0.5s, opacity 0.5s";
+    element.style.transform = "translateX(0)";
+    element.style.opacity = 1;
+
+    setTimeout(() => {
+      element.style.transition = "";
+    }, 510);
+  };
+
+  // Fade out to right.
   const slideFadeOutRight = (element, callback) => {
     element.style.transition = "transform 0.5s, opacity 0.5s";
     element.style.transform = "translateX(100%)";
     element.style.opacity = 0;
     setTimeout(() => {
       callback();
-      element.style.transition = "";
-      element.style.transform = "";
-      element.style.opacity = 1;
     }, 500);
   };
 
-  // ANIMATION LEFT OR RIGHT FADE-IN EFFECT
-  const fadeInFromRight = (element) => {
-    element.style.transform = "translateX(100%)";
-    element.style.opacity = 0;
-    element.style.transition = "transform 0.5s, opacity 0.5s";
-    setTimeout(() => {
-      element.style.transform = "translateX(0)";
-      element.style.opacity = 1;
-    }, 10);
-    setTimeout(() => {
-      element.style.transition = "";
-    }, 510);
-  };
+  // Fade in from left.
   const fadeInFromLeft = (element) => {
     element.style.transform = "translateX(-100%)";
     element.style.opacity = 0;
+    element.style.display = "";
+    element.offsetHeight;
+
     element.style.transition = "transform 0.5s, opacity 0.5s";
-    setTimeout(() => {
-      element.style.transform = "translateX(0)";
-      element.style.opacity = 1;
-    }, 10);
+    element.style.transform = "translateX(0)";
+    element.style.opacity = 1;
     setTimeout(() => {
       element.style.transition = "";
     }, 510);
   };
 
-  // VISIBLE CARDS CONTAINER
+  // INITIAL VISIBILITY
   updateVisibleCards();
-
-  // CLICK EVENT LISTENER : RIGHT ARROW
-  document
-    .querySelector(".speakers__toggle--arrowright")
-    .addEventListener("click", () => {
-      const firstCard = view.querySelector(".speakers__card");
-      slideFadeOutLeft(firstCard, () => {
-        view.appendChild(firstCard);
-        fadeInFromRight(firstCard);
-        applyRippleEffect(firstCard, "left");
-        updateVisibleCards();
-      });
-      activeIndex = (activeIndex + 1) % dots.length;
-      updateDots();
-    });
 
   // CLICK EVENT LISTENER : LEFT ARROW
   document
     .querySelector(".speakers__toggle--arrowleft")
     .addEventListener("click", () => {
-      const cards = view.querySelectorAll(".speakers__card");
-      const lastCard = cards[cards.length - 1];
-      slideFadeOutRight(lastCard, () => {
-        view.insertBefore(lastCard, view.firstChild);
-        fadeInFromLeft(lastCard);
-        applyRippleEffect(lastCard, "right");
-        updateVisibleCards();
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const visibleCards = cards
+        .filter((card) => {
+          const computedOrder =
+            (parseInt(card.dataset.initialOrder, 10) - shift + n) % n;
+          return computedOrder < 3;
+        })
+        .sort((a, b) => {
+          const aOrder = (parseInt(a.dataset.initialOrder, 10) - shift + n) % n;
+          const bOrder = (parseInt(b.dataset.initialOrder, 10) - shift + n) % n;
+          return aOrder - bOrder;
+        });
+
+      const recycledCard = visibleCards[0];
+      const card1 = visibleCards[1];
+      const card2 = visibleCards[2];
+
+      slideFadeOutLeft(recycledCard, () => {
+        shift = (shift + 1) % n;
+        const newOrder =
+          (parseInt(recycledCard.dataset.initialOrder, 10) - shift + n) % n;
+        cards.forEach((card) => {
+          if (card !== recycledCard) {
+            const initialOrder = parseInt(card.dataset.initialOrder, 10);
+            const computedOrder = (initialOrder - shift + n) % n;
+            card.style.order = computedOrder;
+            card.style.display = computedOrder < 3 ? "" : "none";
+          }
+        });
+        recycledCard.style.order = newOrder;
+        fadeInFromRight(recycledCard);
       });
+
+      setTimeout(() => {
+        card1.style.transition = "transform 0.5s ease";
+        card1.style.transform = "translateX(-100%)";
+        setTimeout(() => {
+          card1.style.transition = "";
+          card1.style.transform = "";
+        }, 500);
+      }, 100);
+
+      setTimeout(() => {
+        card2.style.transition = "transform 0.5s ease";
+        card2.style.transform = "translateX(-100%)";
+        setTimeout(() => {
+          card2.style.transition = "";
+          card2.style.transform = "";
+        }, 500);
+      }, 200);
+
+      activeIndex = (activeIndex + 1) % dots.length;
+      updateDots();
+      setTimeout(() => {
+        isAnimating = false;
+      }, 1250);
+    });
+
+  // CLICK EVENT LISTENER : RIGHT ARROW
+  document
+    .querySelector(".speakers__toggle--arrowright")
+    .addEventListener("click", () => {
+      if (isAnimating) return;
+      isAnimating = true;
+      const visibleCards = cards
+        .filter((card) => {
+          const computedOrder =
+            (parseInt(card.dataset.initialOrder, 10) - shift + n) % n;
+          return computedOrder < 3;
+        })
+        .sort((a, b) => {
+          const aOrder = (parseInt(a.dataset.initialOrder, 10) - shift + n) % n;
+          const bOrder = (parseInt(b.dataset.initialOrder, 10) - shift + n) % n;
+          return aOrder - bOrder;
+        });
+
+      const recycledCard = visibleCards[2];
+      const card0 = visibleCards[0];
+      const card1 = visibleCards[1];
+
+      slideFadeOutRight(recycledCard, () => {
+        shift = (shift - 1 + n) % n;
+
+        const newOrder =
+          (parseInt(recycledCard.dataset.initialOrder, 10) - shift + n) % n;
+        cards.forEach((card) => {
+          if (card !== recycledCard) {
+            const initialOrder = parseInt(card.dataset.initialOrder, 10);
+            const computedOrder = (initialOrder - shift + n) % n;
+            card.style.order = computedOrder;
+            card.style.display = computedOrder < 3 ? "" : "none";
+          }
+        });
+        recycledCard.style.order = newOrder;
+        fadeInFromLeft(recycledCard);
+      });
+
+      setTimeout(() => {
+        card0.style.transition = "transform 0.5s ease";
+        card0.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          card0.style.transition = "";
+          card0.style.transform = "";
+        }, 500);
+      }, 100);
+
+      setTimeout(() => {
+        card1.style.transition = "transform 0.5s ease";
+        card1.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          card1.style.transition = "";
+          card1.style.transform = "";
+        }, 500);
+      }, 200);
+
       activeIndex = (activeIndex - 1 + dots.length) % dots.length;
       updateDots();
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, 1250);
     });
 });
