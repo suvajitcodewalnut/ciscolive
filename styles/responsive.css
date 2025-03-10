@@ -150,6 +150,9 @@
     flex-direction: column;
     padding: 98px 40px 90px 36px;
   }
+  .speakers__view {
+    margin-left: -160px;
+  }
   .speakers__left {
     width: 50%;
     margin-left: 10px;
@@ -245,7 +248,7 @@
     overflow-x: hidden;
   }
   .speakers__view {
-    margin-left: 170px;
+    margin-left: 110px;
   }
   .speakers__toggle--dots {
     width: 20%;
@@ -325,7 +328,7 @@
   }
   /* SPEAKERS */
   .speakers__view {
-    margin-left: 420px;
+    margin-left: 280px;
   }
   .speakers__left {
     width: 100%;
@@ -346,5 +349,12 @@
   }
   .sponsors__card {
     padding: 40px;
+  }
+}
+
+/* MOBILE SCREEN : 390PX */
+@media (max-width: 390px) {
+  .speakers__view {
+    margin-left: 380px;
   }
 }
