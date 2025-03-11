@@ -28,7 +28,6 @@
 .party__imageone {
   animation-name: rise;
   animation-duration: 1.8s;
-  /* animation-delay: 1s;  */
   position: relative;
 }
 .party__imagetwo {
@@ -40,7 +39,7 @@
 .party__imagethree {
   animation-name: rise;
   animation-duration: 1.8s;
-  /* animation-delay: 1.4s;  */
+  /* animation-delay: 1.4s; */
   position: relative;
 }
 
@@ -52,7 +51,7 @@
   line-height: 115%;
   animation-name: rise;
   animation-duration: 1.8s;
-  animation-delay: 0.3s;
+  /* animation-delay: 0.3s; */
   position: relative;
 }
 
@@ -77,6 +76,6 @@
   color: transparent;
   background-clip: text;
   animation-name: text-burn;
-  animation-delay: 0.3s;
+  /* animation-delay: 0.3s; */
   animation-duration: 3s;
 }

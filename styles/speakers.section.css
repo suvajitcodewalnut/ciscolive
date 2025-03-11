@@ -117,7 +117,7 @@
     #07182d 100%
   );
   animation-name: cta-burn-inv;
-  background-color: #07182d; 
+  background-color: #07182d;
 }
 .speakers__span {
   font-size: 12px;
@@ -128,10 +128,6 @@
 .speakers__span--description {
   width: 99px;
 }
-
-/* .speakers__button--red {
-  background: linear-gradient(90deg, #ffa700 0%, #ff027e 100%);
-} */
 
 .speakers__right {
   display: flex;
@@ -262,6 +258,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation-name: rise;
+  animation-delay: 0.2s;
+  animation-duration: 2.5s;
+  position: relative;
 }
 .speakers__toggle--arrow {
   display: flex;
