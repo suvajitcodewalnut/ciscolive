@@ -1,6 +1,6 @@
-// Configurations
+// TIMELINE CONFIGURATIONS
 const CONFIG = {
-  startDate: "2024-12-12T00:00:00",
+  startDate: "2025-10-12T00:00:00",
   targetDate: "2025-08-10T23:00:00",
   updateInterval: 1000,
   weeksThreshold: 4,
@@ -37,16 +37,31 @@ document.querySelector(".timeline-progress").appendChild(elements.arrow);
 const calculateTimeline = (currentDate) => {
   const startDate = getDateInTimeZone(CONFIG.startDate);
   const targetDate = getDateInTimeZone(CONFIG.targetDate);
+
+  if (startDate > targetDate) {
+    console.error(
+      "Configuration Error: Start date must not be later than Target date."
+    );
+    return {
+      progress: 0,
+      isComplete: true,
+      remaining: {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        weeks: 0,
+      },
+      shouldShowWeeks: false,
+      targetDate,
+      effectiveStart: null,
+    };
+  }
+
   const totalTime = targetDate - startDate;
   const elapsedTime = currentDate - startDate;
   const remainingTime = targetDate - currentDate;
   const overallProgress = (elapsedTime / totalTime) * 100;
-
-  // PREVIOUS LOGICAL CODE
-  // const remainingDays = Math.max(
-  //   0,
-  //   Math.floor(remainingTime / CONFIG.timeUnits.day)
-  // );
 
   const remainingDays = Math.floor(remainingTime / CONFIG.timeUnits.day);
 
@@ -72,6 +87,7 @@ const calculateTimeline = (currentDate) => {
   const remainingWeeks = Math.ceil(remainingDays / 7);
 
   const shouldShowWeeks = remainingWeeks <= CONFIG.weeksThreshold;
+
   let progress = overallProgress;
   let effectiveStart = null;
 
@@ -100,14 +116,13 @@ const calculateTimeline = (currentDate) => {
   };
 };
 
-// Label generator function
+// LABEL GENERATOR FUNCTION
 const generateLabels = (currentDate) => {
   const timelineInfo = calculateTimeline(currentDate);
   if (timelineInfo.shouldShowWeeks && timelineInfo.effectiveStart) {
     const labels = [];
     const effectiveStart = timelineInfo.effectiveStart;
     const totalWeeks = CONFIG.weeksThreshold;
-
     for (let i = 0; i < totalWeeks; i++) {
       const labelPosition = (i / totalWeeks) * 100;
       const weeksRemaining = totalWeeks - i;
@@ -116,7 +131,6 @@ const generateLabels = (currentDate) => {
         position: labelPosition,
       });
     }
-    // Optionally Remove the first label to match your original behavior.
     return labels.slice(1);
   }
 
@@ -128,6 +142,7 @@ const generateLabels = (currentDate) => {
     (targetDate.getMonth() - startDate.getMonth());
 
   const labels = [];
+
   for (let i = 0; i <= totalMonths; i++) {
     const labelDate = new Date(startDate);
     labelDate.setMonth(labelDate.getMonth() + i);
@@ -135,26 +150,23 @@ const generateLabels = (currentDate) => {
     const labelText = labelDate.toLocaleString("default", { month: "short" });
     labels.push({ label: labelText, position: Math.min(100, labelPosition) });
   }
-
-  // Optionally Remove the first label to match your original behavior.
   return labels.slice(1);
 };
 
-// To Update the Timeline UI
+// UPDATE THE UI
 const updateUI = () => {
   const update = () => {
     const currentDate = getDateInTimeZone(new Date());
     const timelineInfo = calculateTimeline(currentDate);
     const { progress, remaining, isComplete } = timelineInfo;
     const labels = generateLabels(currentDate);
-
     elements.progressDots.style.width = `${progress}%`;
     elements.progressLine.style.left = `${progress}%`;
     elements.progressLine.style.width = `${100 - progress}%`;
     elements.arrow.style.left = `${progress}%`;
     elements.arrow.style.transform = "translateX(-50%)";
 
-    // Update countdown numbers.
+    // UPDATE THE COUNTDOWN
     ["days", "hours", "minutes", "seconds"].forEach((unit) => {
       elements[`${unit}Count`].textContent = String(remaining[unit]).padStart(
         2,
@@ -162,7 +174,7 @@ const updateUI = () => {
       );
     });
 
-    // Update timeline labels
+    // UPDATE LABELS
     elements.monthsList.innerHTML = labels
       .map(
         ({ label, position }) =>
@@ -172,50 +184,63 @@ const updateUI = () => {
       )
       .join("");
 
+    const startDateDisplay = document.getElementById("startDateDisplay");
+    const targetDateDisplay = document.getElementById("targetDateDisplay");
+
+    if (startDateDisplay) {
+      startDateDisplay.textContent = getDateInTimeZone(
+        CONFIG.startDate
+      ).toLocaleString();
+    }
+
+    if (targetDateDisplay) {
+      targetDateDisplay.textContent = getDateInTimeZone(
+        CONFIG.targetDate
+      ).toLocaleString();
+    }
+
     if (isComplete) clearInterval(intervalId);
   };
 
   update();
+
   const intervalId = setInterval(update, CONFIG.updateInterval);
+
   return () => clearInterval(intervalId);
 };
 
-// Initialize Countdown timeline
+// COUNTDOWN TIMELINE
 updateUI();
 
+// VIDEO OPTIMIZATION
 const video = document.querySelector(".hero-section__video");
 if (video) {
-  // Add preloading hint first
   const link = document.createElement("link");
   link.rel = "preload";
   link.as = "video";
   link.href = video.src;
   document.head.appendChild(link);
 
-  // Single consolidated function to handle video play
   const playVideo = () => {
     if (video.paused && video.readyState >= 3) {
-      // Only play when we have enough data
       video.play().catch((error) => {
         console.warn("Video autoplay failed:", error);
       });
     }
   };
-
-  // Listen for the most reliable event for playback
   video.addEventListener("canplaythrough", playVideo, { once: true });
 
-  // Fallback for browsers that might not trigger canplaythrough
   video.addEventListener(
     "loadeddata",
     () => {
-      setTimeout(playVideo, 100); // Small delay to allow for more buffering
+      setTimeout(playVideo, 100);
     },
+
     { once: true }
   );
 }
 
-// Dynamically changing the image with a particular screen size
+// DYNAMICALLY CHANGING OF THE IMAGE
 function updateImage() {
   const imageOne = document.getElementById("imageOne");
   const imageTwo = document.getElementById("imageTwo");
