@@ -30,11 +30,12 @@
 .catalog__section--center {
   flex: 4;
 }
+
 .catalog__image {
   border-radius: 8px;
   animation-name: rise;
   animation-duration: 1.8s;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.2s;  */
   position: relative;
 }
 .catalog__heading {

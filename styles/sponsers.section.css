@@ -18,7 +18,7 @@
 
   animation-name: rise;
   animation-duration: 1.8s;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.5s;  */
   position: relative;
 }
 
@@ -36,7 +36,7 @@
   text-align: center;
   animation-name: rise;
   animation-duration: 1.8s;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.5s; */
   position: relative;
 }
 
