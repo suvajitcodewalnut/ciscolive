@@ -1,6 +1,6 @@
 // TIMELINE CONFIGURATIONS
 const CONFIG = {
-  startDate: "2025-10-12T00:00:00",
+  startDate: "2024-10-12T00:00:00",
   targetDate: "2025-08-10T23:00:00",
   updateInterval: 1000,
   weeksThreshold: 4,
