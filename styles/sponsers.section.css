@@ -15,6 +15,11 @@
   font-weight: 350;
   color: var(--color-text);
   text-align: left;
+
+  animation-name: rise;
+  animation-duration: 1.8s;
+  animation-delay: 0.5s;
+  position: relative;
 }
 
 .sponsors__cards {
@@ -29,4 +34,14 @@
   box-shadow: var(--box-shadow);
   border-radius: 9px;
   text-align: center;
+  animation-name: rise;
+  animation-duration: 1.8s;
+  animation-delay: 0.5s;
+  position: relative;
+}
+
+/* AOS */
+.animation-onscroll-paused {
+  /* animation-play-state: paused !important;  */
+  animation: none !important;
 }
