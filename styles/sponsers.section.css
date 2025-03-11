@@ -40,8 +40,3 @@
   position: relative;
 }
 
-/* AOS */
-.animation-onscroll-paused {
-  /* animation-play-state: paused !important;  */
-  animation: none !important;
-}

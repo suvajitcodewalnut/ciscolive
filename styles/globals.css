@@ -271,3 +271,8 @@
     padding-right: var(--Margin, 24px);
   }
 }
+
+.animation-onscroll-paused {
+  animation: none !important;
+  visibility: hidden;
+}
