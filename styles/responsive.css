@@ -247,6 +247,9 @@
   .speakers {
     overflow-x: hidden;
   }
+  .speakers__left {
+    width: 60%;
+  }
   .speakers__view {
     margin-left: 110px;
   }
