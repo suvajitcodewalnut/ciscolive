@@ -17,7 +17,7 @@ const getDateInTimeZone = (dateInput) => {
   );
 };
 
-// DOM Elements
+// DOM ELEMENTS
 const elements = {
   monthsList: document.getElementById("timelineMonths"),
   progressDots: document.getElementById("timelineProgressDots"),
@@ -33,17 +33,36 @@ const elements = {
 };
 document.querySelector(".timeline-progress").appendChild(elements.arrow);
 
-// Timeline calculations
+// TIMELINE CALCULATIONS
 const calculateTimeline = (currentDate) => {
   const startDate = getDateInTimeZone(CONFIG.startDate);
   const targetDate = getDateInTimeZone(CONFIG.targetDate);
 
+  // HANDLING THE STARTDATE MUST NOT BE GREATER THAN TARGET DATE
   if (startDate > targetDate) {
-    console.error(
-      "Configuration Error: Start date must not be later than Target date."
-    );
+    console.error("Start date must not be later than Target date.");
     return {
       progress: 0,
+      isComplete: true,
+      remaining: {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        weeks: 0,
+      },
+      shouldShowWeeks: false,
+      targetDate,
+      effectiveStart: null,
+    };
+  }
+
+  // // HANDLING THE CURRENTDATE MUST NOT BE GREATER THAN THE TARGET DATE
+  if (currentDate > targetDate) {
+    console.log(currentDate);
+    console.error("Event already ended");
+    return {
+      progress: 100,
       isComplete: true,
       remaining: {
         days: 0,
@@ -98,6 +117,27 @@ const calculateTimeline = (currentDate) => {
     const effectiveTotal = targetDate - effectiveStart;
     const effectiveElapsed = currentDate - effectiveStart;
     progress = (effectiveElapsed / effectiveTotal) * 100;
+
+    const daysLeft = Math.ceil(
+      (targetDate - currentDate) / CONFIG.timeUnits.day
+    );
+
+    if (daysLeft - 1 === 28) {
+      return {
+        progress: 0,
+        isComplete: remainingTime <= 0,
+        remaining: {
+          days: remainingDays,
+          hours: remainingHours,
+          minutes: remainingMinutes,
+          seconds: remainingSeconds,
+          weeks: remainingWeeks,
+        },
+        shouldShowWeeks,
+        targetDate,
+        effectiveStart,
+      };
+    }
   }
 
   return {
@@ -119,9 +159,25 @@ const calculateTimeline = (currentDate) => {
 // LABEL GENERATOR FUNCTION
 const generateLabels = (currentDate) => {
   const timelineInfo = calculateTimeline(currentDate);
+  const targetDate = timelineInfo.targetDate;
+
+  // WHEN CURRENT DATE IS GREATER THAN TARGET, SHOULD SHOW WEEKS
+  if (currentDate > targetDate) {
+    const labels = [];
+    const totalWeeks = CONFIG.weeksThreshold;
+    for (let i = 0; i < totalWeeks; i++) {
+      const labelPosition = (i / totalWeeks) * 100;
+      const weeksAgo = totalWeeks - i;
+      labels.push({
+        label: `${weeksAgo} Week${weeksAgo !== 1 ? "s" : ""}`,
+        position: labelPosition,
+      });
+    }
+    return labels.slice(1);
+  }
+
   if (timelineInfo.shouldShowWeeks && timelineInfo.effectiveStart) {
     const labels = [];
-    const effectiveStart = timelineInfo.effectiveStart;
     const totalWeeks = CONFIG.weeksThreshold;
     for (let i = 0; i < totalWeeks; i++) {
       const labelPosition = (i / totalWeeks) * 100;
@@ -134,15 +190,13 @@ const generateLabels = (currentDate) => {
     return labels.slice(1);
   }
 
+  // MONTH LABELS
   const startDate = getDateInTimeZone(CONFIG.startDate);
-  const targetDate = getDateInTimeZone(CONFIG.targetDate);
-
+  const targetDateDefault = getDateInTimeZone(CONFIG.targetDate);
   const totalMonths =
-    (targetDate.getFullYear() - startDate.getFullYear()) * 12 +
-    (targetDate.getMonth() - startDate.getMonth());
-
+    (targetDateDefault.getFullYear() - startDate.getFullYear()) * 12 +
+    (targetDateDefault.getMonth() - startDate.getMonth());
   const labels = [];
-
   for (let i = 0; i <= totalMonths; i++) {
     const labelDate = new Date(startDate);
     labelDate.setMonth(labelDate.getMonth() + i);
@@ -203,42 +257,12 @@ const updateUI = () => {
   };
 
   update();
-
   const intervalId = setInterval(update, CONFIG.updateInterval);
-
   return () => clearInterval(intervalId);
 };
 
 // COUNTDOWN TIMELINE
 updateUI();
-
-// VIDEO OPTIMIZATION
-const video = document.querySelector(".hero-section__video");
-if (video) {
-  const link = document.createElement("link");
-  link.rel = "preload";
-  link.as = "video";
-  link.href = video.src;
-  document.head.appendChild(link);
-
-  const playVideo = () => {
-    if (video.paused && video.readyState >= 3) {
-      video.play().catch((error) => {
-        console.warn("Video autoplay failed:", error);
-      });
-    }
-  };
-  video.addEventListener("canplaythrough", playVideo, { once: true });
-
-  video.addEventListener(
-    "loadeddata",
-    () => {
-      setTimeout(playVideo, 100);
-    },
-
-    { once: true }
-  );
-}
 
 // DYNAMICALLY CHANGING OF THE IMAGE
 function updateImage() {
