@@ -203,9 +203,7 @@ const updateUI = () => {
   };
 
   update();
-
   const intervalId = setInterval(update, CONFIG.updateInterval);
-
   return () => clearInterval(intervalId);
 };
 
