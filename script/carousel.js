@@ -1,9 +1,23 @@
 // CAROUSEL
 document.addEventListener("DOMContentLoaded", () => {
   const view = document.querySelector(".speakers__view");
-  const dots = document.querySelectorAll(".speakers__toggle--dots .dot");
-  let activeIndex = 0;
-  const cards = Array.from(view.querySelectorAll(".speakers__card"));
+  let dots = Array.from(
+    document.querySelectorAll(".speakers__toggle--dots .dot")
+  );
+  let cards = Array.from(view.querySelectorAll(".speakers__card"));
+
+  // ENSURE THE NUMBER OF CARDS IS EQUAL TO THE NUMBER OF DOTS
+  if (cards.length > dots.length) {
+    cards = cards.slice(0, dots.length);
+  } else if (cards.length < dots.length) {
+    const dotsContainer = document.querySelector(".speakers__toggle--dots");
+    dots.slice(cards.length).forEach((dot) => {
+      dotsContainer.removeChild(dot);
+    });
+    dots = Array.from(
+      document.querySelectorAll(".speakers__toggle--dots .dot")
+    );
+  }
   const n = cards.length;
   let shift = 0;
   let isAnimating = false;
@@ -15,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.animation = "none";
   });
 
-  // VISIBLE ZONE OF THE CAROUSEL 
+  // VISIBLE ZONE OF THE CAROUSEL
   const updateVisibleCards = () => {
     cards.forEach((card) => {
       const initialOrder = parseInt(card.dataset.initialOrder, 10);
@@ -27,27 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // DOTS UPDATE
+  // UPDATE THE DOTS
   const updateDots = () => {
+    const activeDotIndex = cards.findIndex((card) => {
+      const initialOrder = parseInt(card.dataset.initialOrder, 10);
+      return (initialOrder - shift + n) % n === 0;
+    });
     dots.forEach((dot, index) => {
-      dot.style.transition =
-        "opacity 0.3s ease-in-out, transform 0.3s ease-in-out";
-      if (index === activeIndex) {
+      if (index === activeDotIndex) {
         dot.classList.add("active");
         dot.classList.remove("inactive");
-        dot.style.opacity = "1";
-        dot.style.transform = "scale(1.2)";
       } else {
         dot.classList.add("inactive");
         dot.classList.remove("active");
-        dot.style.opacity = "0.5";
-        dot.style.transform = "scale(1)";
       }
     });
   };
 
   // CAROUSEL VIEW
   updateVisibleCards();
+  updateDots();
 
   // SPRING ANIMATION FUNCTION
   function springAnimate(
@@ -142,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDots();
         const cardIn = getCardByComputedOrder(2);
         fadeInFromRight(cardIn, () => {
-          activeIndex = (activeIndex + 1) % dots.length;
           isAnimating = false;
         });
       });
@@ -193,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDots();
         const cardIn = getCardByComputedOrder(0);
         fadeInFromLeft(cardIn, () => {
-          activeIndex = (activeIndex - 1 + dots.length) % dots.length;
           isAnimating = false;
         });
       });

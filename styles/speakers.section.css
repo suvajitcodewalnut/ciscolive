@@ -292,16 +292,20 @@
   gap: 12px;
   width: 55%;
 }
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 7px;
+  border-radius: 10px;
+  background-color: #00a5e294;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
 
 .dot.active {
   width: 70px;
-  height: 7px;
-  border-radius: 10px;
   background-color: white;
 }
 .dot.inactive {
   width: 10px;
-  height: 7px;
-  border-radius: 10px;
   background-color: #00a5e294;
 }
