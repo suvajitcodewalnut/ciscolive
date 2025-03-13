@@ -20,22 +20,27 @@
 .catalog__section--left {
   justify-content: start;
   flex: 1.5;
+  --delay: 0s;
 }
 
 .catalog__section--right {
   justify-content: end;
   flex: 1.5;
+  --delay: .8s;
 }
 
 .catalog__section--center {
   flex: 4;
+  --delay: .4s;
 }
 
 .catalog__image {
   border-radius: 8px;
   animation-name: rise;
+  opacity: 0;
   animation-duration: 1.8s;
-  /* animation-delay: 0.2s;  */
+  animation-delay: var(--delay);
+  animation-fill-mode: forwards;
   position: relative;
 }
 .catalog__heading {
@@ -47,8 +52,11 @@
   color: var(--color-blue);
   font-style: normal;
   line-height: 115%;
+  opacity: 0;
   animation-name: rise;
   animation-duration: 1.8s;
+  animation-delay: var(--delay);
+  animation-fill-mode: forwards;
   position: relative;
 }
 
@@ -56,8 +64,11 @@
   color: var(--color-red);
   font-style: normal;
   line-height: 115%;
+  opacity: 0;
   animation-name: rise;
   animation-duration: 1.8s;
+  animation-delay: var(--delay);
+  animation-fill-mode: forwards;
   position: relative;
 }
 
@@ -88,7 +99,7 @@
   color: transparent;
   background-clip: text;
   animation-name: text-burn;
-  animation-delay: 0.3s;
+  animation-delay: calc( var(--delay) + 0.3s);
   animation-duration: 3s;
 }
 .catalog__paragraph--red {
@@ -112,7 +123,7 @@
   color: transparent;
   background-clip: text;
   animation-name: text-burn;
-  animation-delay: 0.3s;
+  animation-delay: calc( var(--delay) + 0.3s);
   animation-duration: 3s;
 }
 
@@ -129,6 +140,8 @@
   border-radius: 30px;
   font-weight: 700;
   font-size: 12px;
+  text-wrap-mode: nowrap;
+
   background-image: linear-gradient(
     to right,
     #ffa700 0%,
@@ -143,7 +156,7 @@
   background-color: #fff;
   animation-fill-mode: forwards;
   animation-name: cta-burn;
-  animation-delay: 0.3s;
+  animation-delay: calc( var(--delay) + 0.3s);
   animation-duration: 2.5s;
   color: rgba(24, 32, 47, 0);
 }
@@ -175,14 +188,20 @@
   background-color: #fff;
   animation-fill-mode: forwards;
   animation-name: cta-burn;
-  animation-delay: 0.3s;
+  animation-delay: calc( var(--delay) + 0.3s);
   animation-duration: 2.5s;
   color: rgba(24, 32, 47, 0);
 }
 
 .catalog__button-icon {
   margin-top: 3px;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-name: cta-arrow-burn;
+  animation-delay: calc( var(--delay) + 0.3s);
+  animation-duration: 2.5s;
 }
+
 .catalog__button-span {
   font-size: 12px;
   font-style: normal;
