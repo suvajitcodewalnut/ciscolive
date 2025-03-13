@@ -20,9 +20,6 @@ hero-section {
   width: 65%;
   right: 0px;
   top: 0px;
-  height: 100%;
-  height: -webkit-fill-available;
-  object-fit: cover;
 }
 
 .hero-section__content {
