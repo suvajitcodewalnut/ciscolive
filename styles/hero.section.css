@@ -1,5 +1,5 @@
 /* HERO SECTION */
-hero-section {
+.hero-section {
   background-color: var(--color-primary);
   color: var(--color-white);
   display: flex;
