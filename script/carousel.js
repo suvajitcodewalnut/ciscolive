@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // VISIBLE ZONE OF THE CAROUSEL (UPDATED)
   const updateVisibleCards = () => {
-
     cards.forEach((card) => {
       const initialOrder = parseInt(card.dataset.initialOrder, 10);
       const computedOrder = (initialOrder - shift + n) % n;
       card.style.order = computedOrder;
-      card.style.display = computedOrder < 3 ? "" : "none";
+      card.style.display = computedOrder < 3 ? "" : "none"; 
+      // card.style.visibility = computedOrder < 3 ? "visible" : "hidden";
       card.style.transition = "none";
       card.style.transform = "none";
     });
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // EXTRACTED RIGHT TRANSITION 
+  // EXTRACTED RIGHT TRANSITION
   function doRightTransition(callback) {
     isAnimating = true;
     arrowButtonRight.style.border = "1px solid #00A5E2";
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
   }
 
-  // EXTRACTED LEFT TRANSITION 
+  // EXTRACTED LEFT TRANSITION
   function doLeftTransition(callback) {
     isAnimating = true;
     arrowButtonLeft.style.border = "1px solid #00A5E2";
