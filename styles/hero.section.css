@@ -1,15 +1,15 @@
 /* HERO SECTION */
-.hero-section {
+hero-section {
   background-color: var(--color-primary);
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: auto;
   max-height: 800px;
   overflow: hidden;
 }
-
 
 .layer-top {
   z-index: 1;
@@ -20,9 +20,9 @@
   width: 65%;
   right: 0px;
   top: 0px;
+  height: 100%;
   height: -webkit-fill-available;
   object-fit: cover;
-  will-change: transform;
 }
 
 .hero-section__content {
