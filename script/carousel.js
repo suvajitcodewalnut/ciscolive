@@ -128,11 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // RIGHT ARROW CLICK HANDLER
-  document
-    .querySelector(".speakers__toggle--arrowright")
-    .addEventListener("click", () => {
+  const arrowButtonRight = document.querySelector(".speakers__toggle--arrowright")
+
+    arrowButtonRight.addEventListener("click", () => {
       if (isAnimating) return;
       isAnimating = true;
+
+      // CHANGE COLOR ON CLICK
+      arrowButtonRight.style.border = "1px solid #00A5E2";
+      setTimeout(() => {
+        arrowButtonRight.style.border = "";
+      }, 100);
 
       const visibleCards = cards
         .filter((card) => {
@@ -179,52 +185,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // LEFT ARROW CLICK HANDLER
-  document
-    .querySelector(".speakers__toggle--arrowleft")
-    .addEventListener("click", () => {
-      if (isAnimating) return;
-      isAnimating = true;
-      const visibleCards = cards
-        .filter((card) => {
-          const computedOrder =
-            (parseInt(card.dataset.initialOrder, 10) - shift + n) % n;
-          return computedOrder < 3;
-        })
-        .sort((a, b) => {
-          const aOrder = (parseInt(a.dataset.initialOrder, 10) - shift + n) % n;
-          const bOrder = (parseInt(b.dataset.initialOrder, 10) - shift + n) % n;
-          return aOrder - bOrder;
-        });
-      const cardOut = visibleCards[2];
-      const card0 = visibleCards[0];
-      const card1 = visibleCards[1];
+  const arrowButtonLeft = document.querySelector(
+    ".speakers__toggle--arrowleft"
+  );
 
-      slideFadeOutRight(cardOut, () => {
-        shift = (shift - 1 + n) % n;
-        updateVisibleCards();
-        updateDots();
-        const cardIn = getCardByComputedOrder(0);
-        fadeInFromLeft(cardIn, () => {
-          isAnimating = false;
-        });
+  arrowButtonLeft.addEventListener("click", () => {
+    if (isAnimating) return;
+    isAnimating = true;
+    // CHANGE COLOR ON CLICK
+    arrowButtonLeft.style.border = "1px solid #00A5E2";
+    setTimeout(() => {
+      arrowButtonLeft.style.border = "";
+    }, 100);
+
+    const visibleCards = cards
+      .filter((card) => {
+        const computedOrder =
+          (parseInt(card.dataset.initialOrder, 10) - shift + n) % n;
+        return computedOrder < 3;
+      })
+      .sort((a, b) => {
+        const aOrder = (parseInt(a.dataset.initialOrder, 10) - shift + n) % n;
+        const bOrder = (parseInt(b.dataset.initialOrder, 10) - shift + n) % n;
+        return aOrder - bOrder;
       });
+    const cardOut = visibleCards[2];
+    const card0 = visibleCards[0];
+    const card1 = visibleCards[1];
 
-      setTimeout(() => {
-        card0.style.transition = "transform 0.5s ease";
-        card0.style.transform = "translateX(100%)";
-        setTimeout(() => {
-          card0.style.transition = "";
-          card0.style.transform = "";
-        }, 500);
-      }, 100);
-
-      setTimeout(() => {
-        card1.style.transition = "transform 0.5s ease";
-        card1.style.transform = "translateX(100%)";
-        setTimeout(() => {
-          card1.style.transition = "";
-          card1.style.transform = "";
-        }, 500);
-      }, 200);
+    slideFadeOutRight(cardOut, () => {
+      shift = (shift - 1 + n) % n;
+      updateVisibleCards();
+      updateDots();
+      const cardIn = getCardByComputedOrder(0);
+      fadeInFromLeft(cardIn, () => {
+        isAnimating = false;
+      });
     });
+
+    setTimeout(() => {
+      card0.style.transition = "transform 0.5s ease";
+      card0.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        card0.style.transition = "";
+        card0.style.transform = "";
+      }, 500);
+    }, 100);
+
+    setTimeout(() => {
+      card1.style.transition = "transform 0.5s ease";
+      card1.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        card1.style.transition = "";
+        card1.style.transform = "";
+      }, 500);
+    }, 200);
+  });
 });
