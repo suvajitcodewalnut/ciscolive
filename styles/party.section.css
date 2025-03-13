@@ -25,24 +25,6 @@
   margin-right: 4px;
 }
 
-.party__imageone {
-  animation-name: rise;
-  animation-duration: 1.8s;
-  position: relative;
-}
-.party__imagetwo {
-  animation-name: rise;
-  animation-duration: 1.8s;
-  /* animation-delay: 1.2s;  */
-  position: relative;
-}
-.party__imagethree {
-  animation-name: rise;
-  animation-duration: 1.8s;
-  /* animation-delay: 1.4s; */
-  position: relative;
-}
-
 .party__heading--blue {
   font-size: 44px;
   color: var(--color-blue);
@@ -53,6 +35,7 @@
   animation-duration: 1.8s;
   /* animation-delay: 0.3s; */
   position: relative;
+  margin-bottom: 8px;
 }
 
 .party__paragraph {
@@ -71,11 +54,69 @@
   background-position-x: 300%;
   background-repeat: no-repeat;
   background-size: 200% 100px;
-  background-color: #fff;
   animation-fill-mode: forwards;
-  color: transparent;
   background-clip: text;
   animation-name: text-burn;
-  /* animation-delay: 0.3s; */
   animation-duration: 3s;
+}
+
+.party__heading--blue,
+.party__paragraph {
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, black, black);
+  mask-image: linear-gradient(90deg, black, black);
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: revealMask 2s forwards;
+}
+
+@keyframes revealMask {
+  from {
+    -webkit-mask-size: 0% 100%;
+    mask-size: 0% 100%;
+  }
+  to {
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+}
+
+/* Define keyframes for fade in and upward movement */
+@keyframes fadeAndMove {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Group common animation rules for all images */
+.party__imageone,
+.party__imagetwo,
+.party__imagethree {
+  animation-name: fadeAndMove;
+  animation-duration: 1.8s;
+  animation-fill-mode: both; /* Applies both the initial and final keyframe states */
+}
+
+/* Apply staggered delays */
+.party__imageone {
+  animation-delay: 0.7s;
+}
+
+.party__imagetwo {
+  animation-delay: 0.8s;
+}
+
+.party__imagethree {
+  animation-delay: 0.7s;
+}
+
+.animation-onscroll-paused {
+  animation-play-state: paused !important;
 }
