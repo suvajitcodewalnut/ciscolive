@@ -156,6 +156,7 @@
   gap: 24px;
   overflow: hidden;
   padding: 1px;
+  padding-right: 2px;
   padding-left: 10px;
   --initdelay: 0.6s;
 }
@@ -249,7 +250,6 @@
   border-radius: 11px;
   background: var(--New-Blue, #07182d);
 }
-
 
 .speakers__card--description h3 {
   display: flex;
@@ -365,4 +365,3 @@
   width: 10px;
   background-color: #00a5e294;
 }
-
