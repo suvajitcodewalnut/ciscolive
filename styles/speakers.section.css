@@ -326,8 +326,8 @@
 }
 .speakers__toggle--arrowleft,
 .speakers__toggle--arrowright {
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   border: 1px solid rgb(246, 244, 244);
   border-radius: 50%;
   display: flex;
@@ -335,9 +335,11 @@
   justify-content: center;
 }
 .arrow_left {
+  width: 28px;
   margin-left: 10px;
 }
 .arrow_right {
+  width: 28px;
   margin-right: 10px;
 }
 
@@ -358,10 +360,10 @@
 }
 
 .dot.active {
-  width: 70px;
+  width: 40px;
   background-color: white;
 }
 .dot.inactive {
-  width: 10px;
+  width: 20px;
   background-color: #00a5e294;
 }
