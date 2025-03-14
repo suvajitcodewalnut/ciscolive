@@ -334,12 +334,18 @@
   align-items: center;
   justify-content: center;
 }
+
 .arrow_left {
+  background: url(../assets/arrow_left.svg) no-repeat center / contain;
   width: 28px;
+  height: 28px;
   margin-left: 10px;
 }
+
 .arrow_right {
+  background: url(../assets/arrow_right.svg) no-repeat center / contain;
   width: 28px;
+  height: 28px;
   margin-right: 10px;
 }
 
@@ -366,4 +372,16 @@
 .dot.inactive {
   width: 20px;
   background-color: #00a5e294;
+}
+
+/* HOVER STATES */
+.speakers__toggle--arrowleft:hover,
+arrow_left:hover {
+  border: 1px solid #00a5e2;
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+}
+.speakers__toggle--arrowright:hover,
+arrow_right:hover {
+  border: 1px solid #00a5e2;
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
 }
