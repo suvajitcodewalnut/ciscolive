@@ -8,28 +8,29 @@ document.addEventListener("DOMContentLoaded", () => {
     threshold: 0.3,
   };
 
-  // const observer = new IntersectionObserver((entries, observer) => {
-  //   entries.forEach((entry) => {
-  //     if (entry.isIntersecting) {
-  //       entry.target.classList.remove("animation-onscroll-paused");
-  //       observer.unobserve(entry.target);
-  //     }
-  //   });
-  // }, observerOptions);
-
-  // elements.forEach((element) => observer.observe(element));
-
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        if (window.innerWidth <= 400) {
-          entry.target.classList.remove("animation-onscroll-paused");
-        } else {
-          entry.target.classList.remove("animation-onscroll-paused");
-          observer.unobserve(entry.target);
-        }
+        entry.target.classList.remove("animation-onscroll-paused");
+        observer.unobserve(entry.target);
       }
-    }, observerOptions);
-  });
+    });
+  }, observerOptions);
+
   elements.forEach((element) => observer.observe(element));
 });
+
+//   const observer = new IntersectionObserver((entries, observer) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting) {
+//         if (window.innerWidth < 400) {
+//           entry.target.classList.remove("animation-noscroll-paused");
+//         } else {
+//           entry.target.classList.remove("animation-onscroll-paused");
+//           observer.unobserve(entry.target);
+//         }
+//       }
+//     }, observerOptions);
+//   });
+//   elements.forEach((element) => observer.observe(element));
+// })
