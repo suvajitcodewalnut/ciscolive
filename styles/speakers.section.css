@@ -368,6 +368,10 @@
   background-color: #00a5e294;
 }
 
+.speakers__card[data-animating="true"] {
+  transition: all 0.4s ease-in-out;
+}
+
 /* HOVER STATES */
 .speakers__toggle--arrowleft:hover,
 arrow_left:hover {
