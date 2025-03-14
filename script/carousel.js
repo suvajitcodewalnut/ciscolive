@@ -73,14 +73,14 @@ nextButton.addEventListener("click", () => {
 
   currentFirstSlide.setAttribute("data-animating", "true");
   currentFirstSlide.style.opacity = "0";
-  currentFirstSlide.style.transform = "translateX(calc(-100% - 28px))";
+  currentFirstSlide.style.transform = "translateX(calc(-100% - 24px))";
 
   currentFirstSlide.addEventListener(
     "transitionend",
     () => {
       nextSlides.forEach((slide, index) => {
         slide.setAttribute("data-animating", "true");
-        slide.style.transform = "translateX(calc(-100% - 28px))";
+        slide.style.transform = "translateX(calc(-100% - 24px))";
         slide.style.transitionDelay = `${index * 0.2}s`;
       });
     },
@@ -123,14 +123,14 @@ prevButton.addEventListener("click", () => {
 
   currentLastSlide.setAttribute("data-animating", "true");
   currentLastSlide.style.opacity = "0";
-  currentLastSlide.style.transform = "translateX(calc(100% + 28px))";
+  currentLastSlide.style.transform = "translateX(calc(100% + 24px))";
 
   currentLastSlide.addEventListener(
     "transitionend",
     () => {
       prevSlides.forEach((slide, index) => {
         slide.setAttribute("data-animating", "true");
-        slide.style.transform = "translateX(calc(100% + 28px))";
+        slide.style.transform = "translateX(calc(100% + 24px))";
         slide.style.transitionDelay = `${index * 0.2}s`;
       });
     },

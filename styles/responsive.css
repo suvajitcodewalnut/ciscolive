@@ -1,16 +1,4 @@
 /* MEDIA */
-@media (min-width: 1441px) {
-  /* PARTY */
-  .party {
-    padding: clamp(35px, 3vw, 80px) clamp(100px, 6vw, 200px)
-      clamp(80px, 4vw, 120px) clamp(160px, 8vw, 250px);
-    /* max-width: 1440px; */
-  }
-
-  .speakers__left {
-    margin-left: 40px;
-  }
-}
 /* DESKTOP SCREEN : 1440PX */
 @media (width: 1440px) {
   /* CATALOG */
@@ -229,6 +217,12 @@
 @media (min-width: 1024px) {
   .speakers-wrapper {
     flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  .speakers-wrapper {
+    padding: 100px 110px 50px 110px;
   }
 }
 
