@@ -80,22 +80,26 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+
   background-image: linear-gradient(
     to right,
     #18202f 0%,
-    #18202f 16%,
-    #1213af 52%,
-    #255ef0 62%,
-    #1cb9ff 74%,
+    #18202f 50%,
+    #1213af 74%,
+    #255ef0 81%,
+    #1cb9ff 87%,
     white 100%
   );
   background-position-x: 300%;
   background-repeat: no-repeat;
-  background-size: 200% 100px;
+  background-size: 200% 300px;
   background-color: #fff;
-  animation-fill-mode: forwards;
   color: transparent;
   background-clip: text;
+  opacity: 0;
+
+  animation-fill-mode: forwards;
   animation-name: text-burn;
-  animation-duration: 3s;
+  animation-delay: calc(var(--delay) + 0.3s);
+  animation-duration: 4s;
 }

@@ -28,7 +28,6 @@
     top: 30px;
   }
   10% {
-    visibility: hidden;
     opacity: 0;
   }
   80% {
@@ -114,29 +113,6 @@
   }
 }
 
-/* TEXT BURN ANIMATION */
-@keyframes text-burn-inv {
-  0% {
-    background-position-x: 200%;
-    background-color: #07182d;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    background-color: #07182d;
-  }
-  51% {
-    background-color: #ffffff;
-  }
-  100% {
-    background-position-x: -50%;
-    background-color: #ffffff;
-    opacity: 1;
-  }
-}
-
 /* CALL-TO-ACTION BURN ANIMATION */
 @keyframes cta-burn {
   0% {
@@ -196,11 +172,11 @@
     background-position-x: 200%;
     background-color: #07182d;
     color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
+    padding-right: 60%;
   }
   10% {
     color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
+    padding-right: 60%;
   }
   40% {
     color: rgba(24, 32, 47, 1);
@@ -217,32 +193,27 @@
   100% {
     background-position-x: 0%;
     background-color: #ffffff;
-    color: rgba(24, 32, 47, 1);
+    /* color: rgba(24, 32, 47, 1);  */
+    color: #07182d;
     padding-right: var(--Margin, 24px);
   }
 }
 
 /* TEXT BURN ANIMATION */
 @keyframes text-burn {
-  0% {
-    opacity: 0;
-    background-position-x: 200%;
-    background-color: #ffffff;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  100% {
-    background-position-x: -50%;
-    background-color: #18202f;
-    opacity: 1;
-  }
+	0% {
+	background-position-x: 200%;
+	opacity: 0;
+	}
+	
+	10%{
+	opacity: 1;
+	}
+	
+	100% {
+	background-position-x: 0%;
+	opacity: 1;
+	}
 }
 
 /* ANIMATION TO ALL CHILDREN CONTROL */
