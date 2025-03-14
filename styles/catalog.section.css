@@ -42,7 +42,9 @@
   animation-delay: var(--delay);
   animation-fill-mode: forwards;
   position: relative;
+  margin-left: 15px;
 }
+
 .catalog__heading {
   font-size: 44px;
   font-weight: 350;

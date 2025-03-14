@@ -423,12 +423,22 @@
 }
 
 @media (width <= 390px) {
+  /* CATALOG */
+  .catalog__image {
+    margin-left: 0px;
+  }
+  /* SPEAKERS */
   .speakers__card--description {
     height: 210px;
   }
 }
 
 @media (width <= 744px) {
+  /* CATALOG */
+  .catalog__image {
+    margin-left: 0px;
+  }
+  /* SPEAKERS */
   .speakers__toggle {
     padding-right: 24px;
   }

@@ -1,6 +1,6 @@
 // CAROUSEL LOGIC
 const emblaNode = document.querySelector(".speakers__right");
-const options = { loop: false, align: "start" };
+const options = { loop: false, align: "start", inViewThreshold: 0.2 };
 const emblaApi = EmblaCarousel(emblaNode, options);
 
 const nextButton = document.querySelector(".speakers__toggle--arrowright");
@@ -52,6 +52,10 @@ addDotBtnsAndClickHandlers(
 );
 
 nextButton.addEventListener("click", () => {
+  if (window.innerWidth <= 544) {
+    emblaApi.scrollNext();
+    return;
+  }
   const slidesInView = emblaApi.slidesInView();
   const allSlideNodes = emblaApi.slideNodes();
 
@@ -103,6 +107,10 @@ nextButton.addEventListener("click", () => {
 });
 
 prevButton.addEventListener("click", () => {
+  if (window.innerWidth <= 544) {
+    emblaApi.scrollPrev();
+    return;
+  }
   const slidesInView = emblaApi.slidesInView();
   const allSlideNodes = emblaApi.slideNodes();
 
