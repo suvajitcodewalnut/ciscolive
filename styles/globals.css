@@ -1,36 +1,34 @@
+/* CONTAINER */
 .container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0px;
 }
 
-@keyframes rise {
+/* APPEAR ANIMATION */
+@keyframes appear {
   0% {
     opacity: 0;
-    top: 30px;
+    top: 10px;
   }
-  10% {
+  60% {
     opacity: 0;
-  }
-  80% {
-    opacity: 1;
+    top: 0.65px;
   }
   100% {
     opacity: 1;
-    top: 0;
+    top: 0px;
   }
-}.container {
-  max-width: 1440px; 
-  margin: 0 auto;
-  padding: 0px;
 }
 
+/* RISE ANIMATION*/
 @keyframes rise {
   0% {
     opacity: 0;
     top: 30px;
   }
   10% {
+    visibility: hidden;
     opacity: 0;
   }
   80% {
@@ -42,6 +40,7 @@
   }
 }
 
+/* SPEAKERS RISE ANIMATION */
 @keyframes speaker-rise {
   0% {
     opacity: 0;
@@ -73,6 +72,7 @@
   }
 }
 
+/* SPEAKER BORDER ANIMATION */
 @keyframes speaker-border {
   0% {
     background-position-x: 200%;
@@ -94,6 +94,7 @@
   }
 }
 
+/* CARD RISE ANIMATION */
 @keyframes card-rise {
   0% {
     opacity: 0;
@@ -113,14 +114,14 @@
   }
 }
 
-/* Added an opacity transition to fix some flickering in on some backgrounds -WC */
+/* TEXT BURN ANIMATION */
 @keyframes text-burn-inv {
   0% {
     background-position-x: 200%;
     background-color: #07182d;
     opacity: 0;
   }
-  10%{
+  10% {
     opacity: 1;
   }
   50% {
@@ -136,16 +137,18 @@
   }
 }
 
+/* CALL-TO-ACTION BURN ANIMATION */
 @keyframes cta-burn {
   0% {
+    opacity: 0;
     background-position-x: 200%;
     background-color: #ffffff;
     color: rgba(24, 32, 47, 0);
-    padding-right: 60%;
+    padding-right: 100px;
   }
   10% {
     color: rgba(24, 32, 47, 0);
-    padding-right: 60%;
+    padding-right: 100px;
   }
   40% {
     color: rgba(24, 32, 47, 1);
@@ -160,6 +163,7 @@
     padding-right: var(--Margin, 24px);
   }
   100% {
+    opacity: 1;
     background-position-x: 0%;
     background-color: #18202f;
     color: rgba(24, 32, 47, 1);
@@ -167,7 +171,7 @@
   }
 }
 
-/* Added new animation for just the CTA arrow */
+/* CALL-TO-ACTION ARROW ANIMATION */
 @keyframes cta-arrow-burn {
   0% {
     opacity: 0;
@@ -186,16 +190,17 @@
   }
 }
 
+/* CALL-TO-ACTION BURN INVERSE ANIMATION */
 @keyframes cta-burn-inv {
   0% {
     background-position-x: 200%;
     background-color: #07182d;
     color: rgba(24, 32, 47, 0);
-    padding-right: 60%;
+    padding-right: 100px;
   }
   10% {
     color: rgba(24, 32, 47, 0);
-    padding-right: 60%;
+    padding-right: 100px;
   }
   40% {
     color: rgba(24, 32, 47, 1);
@@ -217,45 +222,7 @@
   }
 }
 
-@keyframes card-rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-  }
-  10% {
-    opacity: 0;
-    box-shadow: 0px 0px 44px 0px rgba(26, 127, 164, 0);
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-    box-shadow: 0px 14px 44px 0px rgba(26, 127, 164, 0.17);
-  }
-}
-
-@keyframes rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-  }
-  10% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-
-
-/* Added an opacity transition to fix some flickering in on some backgrounds -WC */
+/* TEXT BURN ANIMATION */
 @keyframes text-burn {
   0% {
     opacity: 0;
@@ -278,300 +245,12 @@
   }
 }
 
-@keyframes cta-burn {
-  0% {
-    opacity: 0;
-    background-position-x: 200%;
-    background-color: #ffffff;
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  10% {
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  40% {
-    color: rgba(24, 32, 47, 1);
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  70% {
-    padding-right: var(--Margin, 24px);
-  }
-  100% {
-    opacity: 1;
-    background-position-x: 0%;
-    background-color: #18202f;
-    color: rgba(24, 32, 47, 1);
-    padding-right: var(--Margin, 24px);
-  }
-}
-
-/* ANIMATION TO ALL CHILDREN CONTROL  */
+/* ANIMATION TO ALL CHILDREN CONTROL */
 .animation-onscroll-paused * {
   animation: none !important;
   visibility: hidden;
 }
-
-@keyframes speaker-rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-    background-position-x: 200%;
-    background-color: #07182d;
-  }
-  10% {
-    opacity: 0;
-    box-shadow: 0 0px 14px 0 rgba(17, 20, 56, 0);
-    background-position-x: 200%;
-    background-color: #07182d;
-  }
-  50% {
-    background-color: #07182d;
-  }
-  51% {
-    background-color: #ffffff;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-    box-shadow: 0 8px 14px 0 rgba(17, 20, 56, 0.4);
-    background-position-x: -60%;
-    background-color: #ffffff;
-  }
-}
-
-@keyframes speaker-border {
-  0% {
-    background-position-x: 200%;
-    background-color: #07182d;
-  }
-  10% {
-    background-position-x: 200%;
-    background-color: #07182d;
-  }
-  50% {
-    background-color: #07182d;
-  }
-  51% {
-    background-color: #ffffff;
-  }
-  100% {
-    background-position-x: -60%;
-    background-color: #ffffff;
-  }
-}
-
-@keyframes card-rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-  }
-  10% {
-    opacity: 0;
-    box-shadow: 0px 0px 44px 0px rgba(26, 127, 164, 0);
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-    box-shadow: 0px 14px 44px 0px rgba(26, 127, 164, 0.17);
-  }
-}
-
-@keyframes text-burn {
-  0% {
-    background-position-x: 200%;
-    background-color: #ffffff;
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  100% {
-    background-position-x: -50%;
-    background-color: #18202f;
-  }
-}
-
-@keyframes text-burn-inv {
-  0% {
-    background-position-x: 200%;
-    background-color: #07182d;
-  }
-  50% {
-    background-color: #07182d;
-  }
-  51% {
-    background-color: #ffffff;
-  }
-  100% {
-    background-position-x: -50%;
-    background-color: #ffffff;
-  }
-}
-
-@keyframes cta-burn {
-  0% {
-    background-position-x: 200%;
-    background-color: #ffffff;
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  10% {
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  40% {
-    color: rgba(24, 32, 47, 1);
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  70% {
-    padding-right: var(--Margin, 24px);
-  }
-  100% {
-    background-position-x: 0%;
-    background-color: #18202f;
-    color: rgba(24, 32, 47, 1);
-    padding-right: var(--Margin, 24px);
-  }
-}
-
-@keyframes cta-burn-inv {
-  0% {
-    background-position-x: 200%;
-    background-color: #07182d;
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  10% {
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  40% {
-    color: rgba(24, 32, 47, 1);
-  }
-  50% {
-    background-color: #07182d;
-  }
-  51% {
-    background-color: #ffffff;
-  }
-  70% {
-    padding-right: var(--Margin, 24px);
-  }
-  100% {
-    background-position-x: 0%;
-    background-color: #ffffff;
-    color: rgba(24, 32, 47, 1);
-    padding-right: var(--Margin, 24px);
-  }
-}
-
-@keyframes card-rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-  }
-  10% {
-    opacity: 0;
-    box-shadow: 0px 0px 44px 0px rgba(26, 127, 164, 0);
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-    box-shadow: 0px 14px 44px 0px rgba(26, 127, 164, 0.17);
-  }
-}
-
-@keyframes rise {
-  0% {
-    opacity: 0;
-    top: 30px;
-  }
-  10% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-
-@keyframes text-burn {
-  0% {
-    background-position-x: 200%;
-    background-color: #ffffff;
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  100% {
-    background-position-x: -50%;
-    background-color: #18202f;
-  }
-}
-
-@keyframes cta-burn {
-  0% {
-    opacity: 0;
-    background-position-x: 200%;
-    background-color: #ffffff;
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  10% {
-    color: rgba(24, 32, 47, 0);
-    padding-right: 100px;
-  }
-  40% {
-    color: rgba(24, 32, 47, 1);
-  }
-  50% {
-    background-color: #ffffff;
-  }
-  51% {
-    background-color: #18202f;
-  }
-  70% {
-    padding-right: var(--Margin, 24px);
-  }
-  100% {
-    opacity: 1;
-    background-position-x: 0%;
-    background-color: #18202f;
-    color: rgba(24, 32, 47, 1);
-    padding-right: var(--Margin, 24px);
-  }
-}
-
-.animation-onscroll-paused{
+.animation-onscroll-paused {
   animation: none !important;
   visibility: hidden;
 }

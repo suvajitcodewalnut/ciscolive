@@ -57,7 +57,7 @@ const calculateTimeline = (currentDate) => {
     };
   }
 
-  // // HANDLING THE CURRENTDATE MUST NOT BE GREATER THAN THE TARGET DATE
+  // HANDLING THE CURRENTDATE MUST NOT BE GREATER THAN THE TARGET DATE
   if (currentDate > targetDate) {
     console.log(currentDate);
     console.error("Event already ended");
