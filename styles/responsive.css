@@ -443,3 +443,20 @@
     padding-right: 24px;
   }
 }
+
+.extra__card {
+  visibility: hidden !important;
+}
+
+@media (width >= 544px) and (width <= 1024px) {
+  .overlay {
+    position: absolute;
+    bottom: 7%;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 200;
+    height: 800px;
+    width: 250px;
+    background-color: #07182d;
+  }
+}

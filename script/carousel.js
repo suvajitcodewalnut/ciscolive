@@ -162,3 +162,38 @@ prevButton.addEventListener("click", () => {
     { once: true }
   );
 });
+
+function appendExtraCard() {
+  const parent = document.querySelector(".speakers__view");
+
+  if (window.innerWidth >= 544 && window.innerWidth <= 1024) {
+    const extraCard = document.getElementById("extraCard");
+
+    if (!extraCard) {
+      parent.innerHTML =
+        parent.innerHTML +
+        `<div id="extraCard" class="speakers__card extra__card">
+              <div class="speakers__card--image">
+                <img src="./assets/speaker_three.png" alt="" class="speakers__image ">
+              </div>
+              <div class="speakers__card--wrapper">
+                <div class="speakers__card--description">
+                  <h3>Chuck Robbins</h3>
+                  <hr class="horizontalrule">
+                  <p>Chair and Chief Executive Officer of Cisco Systems</p>
+                </div>
+              </div>
+            </div>`;
+    }
+  } else {
+    const extraCard = document.getElementById("extraCard");
+    extraCard.remove();
+  }
+}
+
+appendExtraCard();
+
+window.addEventListener("resize", () => {
+  appendExtraCard();
+  emblaApi.scrollTo(0);
+});
