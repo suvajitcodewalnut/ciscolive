@@ -1,12 +1,23 @@
 /* MEDIA */
+@media (min-width: 1441px) {
+  /* PARTY */
+  .party {
+    padding: clamp(35px, 3vw, 80px) clamp(100px, 6vw, 200px)
+      clamp(80px, 4vw, 120px) clamp(160px, 8vw, 250px);
+  }
+
+  .speakers__left {
+    margin-left: 40px;
+  }
+}
 /* DESKTOP SCREEN : 1440PX */
 @media (width: 1440px) {
   /* CATALOG */
   .catalog__content {
-    padding: 120px 110px 120px 110px;
+    padding: 120px 110px 120px 119px;
   }
   /* HERO SECTION */
-  .hero-section__content {
+  .hearo-section__content {
     height: clamp(700px, 50vh, 900px);
     justify-content: center;
   }
@@ -115,9 +126,6 @@
   .speakers__card {
     width: 255px;
   }
-  /* .speakers__image {
-    width: 255px;
-  } */
   /* SOPONSERS */
   .sponsors {
     padding: 60px 42px 90px;
