@@ -24,7 +24,7 @@
     rgb(255, 255, 255);
   background-size: 55%; 
   background-repeat: no-repeat;
-  animation: increaseGradient 10s forwards; 
+  animation: scalegradient 10s forwards; 
 }
 
 .party__left {

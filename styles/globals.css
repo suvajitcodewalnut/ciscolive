@@ -217,7 +217,7 @@
 }
 
 /* GRADIENT GROW ANIMATION */
-@keyframes increaseGradient {
+@keyframes scalegradient {
   0% {
     background-size: 55%;
   }
