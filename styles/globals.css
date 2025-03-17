@@ -201,21 +201,48 @@
 
 /* TEXT BURN ANIMATION */
 @keyframes text-burn {
-	0% {
-	background-position-x: 200%;
-	opacity: 0;
-	}
-	
-	10%{
-	opacity: 1;
-	}
-	
-	100% {
-	background-position-x: 0%;
-	opacity: 1;
-	}
+  0% {
+    background-position-x: 200%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position-x: 0%;
+    opacity: 1;
+  }
 }
 
+/* GRADIENT GROW ANIMATION */
+@keyframes increaseGradient {
+  0% {
+    background-size: 55%;
+  }
+  20% {
+    background-size: 59%;
+  }
+  30% {
+    background-size: 60%;
+  }
+  50% {
+    background-size: 67%;
+  }
+  65% {
+    background-size: 77%;
+  }
+  85% {
+    background-size: 85%;
+  }
+  95% {
+    background-size: 95%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
 /* ANIMATION TO ALL CHILDREN CONTROL */
 .animation-onscroll-paused * {
   animation: none !important;

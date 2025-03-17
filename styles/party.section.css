@@ -5,6 +5,7 @@
   justify-content: center;
   overflow: hidden;
   padding: 35px 110px 80px 116px;
+  --delay: 0s;
   background: radial-gradient(
       34.97% 43.31% at 35.18% 60.53%,
       rgba(5, 93, 255, 0.2) 0%,
@@ -21,6 +22,9 @@
       rgba(255, 255, 255, 0) 100%
     ),
     rgb(255, 255, 255);
+  background-size: 55%; 
+  background-repeat: no-repeat;
+  animation: increaseGradient 10s forwards; 
 }
 
 .party__left {
@@ -28,10 +32,10 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
-  --delay: 0.8s;
+  --delay: 1s;
 }
 .party__right {
-  --delay: 0s;
+  --delay: 0.55s;
 }
 .party__left-imageone {
   margin-top: 101px;
